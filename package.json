@@ -3,11 +3,33 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    
+    "env:local": "node __scripts__/environment.js local",
+    "env:homolog": "node __scripts__/environment.js homolog",
+    "env:production": "node __scripts__/environment.js production",
+    
+    "_ios": "react-native run-ios",
+    "ios": "yarn env:local && yarn _ios",
+    "ios:homolog": "yarn env:homolog && yarn _ios",
+    "ios:production": "yarn env:production && yarn _ios",
+    
+    "_build:ios": "react-native bundle --platform ios ...",
+    "build:ios": "yarn env:local && yarn _build:ios",
+    "build:ios:homolog": "yarn env:homolog && yarn _build:ios",
+    "build:ios:production": "yarn env:production && yarn _build:ios",
+    
+    "_android": "react-native run-android",
+    "android": "yarn env:local && yarn _android",
+    "android:homolog": "yarn env:homolog && yarn _android",
+    "android:production": "yarn env:production && yarn _android",
+    
+    "_build:android": "react-native bundle --platform android ...",
+    "build:android": "yarn env:local && yarn _build:android",
+    "build:android:homolog": "yarn env:homolog && yarn _build:android",
+    "build:android:production": "yarn env:production && yarn _build:android"
   },
   "dependencies": {
     "react": "16.13.1",

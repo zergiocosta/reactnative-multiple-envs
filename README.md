@@ -1,6 +1,6 @@
 # React Native - Multiple Environments
 
-#### POC for setting multiple environments in React Native
+### POC for setting multiple environments in React Native
 
 Setting up your environment:
 
@@ -9,7 +9,9 @@ Setting up your environment:
   $ yarn
 ```
 
-Running on iOS:
+#### iOS
+
+Running:
 
 ```sh
   # local env
@@ -22,7 +24,22 @@ Running on iOS:
   $ yarn ios:production
 ```
 
-Running on Android:
+[Building](#working-with-builds):
+
+```sh
+  # local env
+  $ yarn build:ios
+
+  # homolog env
+  $ yarn build:ios:homolog
+
+  # production env
+  $ yarn build:ios:production
+```
+
+#### Android
+
+Running:
 
 ```sh
   # local env
@@ -33,4 +50,30 @@ Running on Android:
 
   # production env
   $ yarn android:production
+```
+
+[Building](#working-with-builds):
+
+```sh
+  # local env
+  $ yarn build:android
+
+  # homolog env
+  $ yarn build:android:homolog
+
+  # production env
+  $ yarn build:android:production
+```
+
+
+### Working with builds
+
+Before creating a build, you must setup your own build config in `./package.json`
+
+```json
+  // Line 19:
+  "_build:ios": "react-native bundle --platform ios ..."
+
+  // Line 29:
+  "_build:android": "react-native bundle --platform android ..."
 ```
